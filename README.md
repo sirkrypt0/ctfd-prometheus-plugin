@@ -17,6 +17,20 @@ The value in the CTFd configuration supersedes the environment variable.
 - `PROMETHEUS_ENABLED`: If set, this plugin is enabled.
 - `PROMETHEUS_AUTH_TOKEN`: If this plugin is enabled, this option must be set to receive metrics. Then, the specified token must be set as a `Bearer` token in the HTTP `Authorization` header as access to the metrics is otherwise forbidden.
 
+### Prometheus
+
+Prometheus can be configured as follows.
+
+```yaml
+scrape_configs:
+  - job_name: 'ctfd'
+    authorization:
+      type: Bearer
+      credentials: <auth-token>
+    static_configs:
+      - targets: ['<https://ctfd.example.com>']
+```
+
 ## Metrics
 
 In addition to the [default metrics](https://github.com/prometheus/client_python/tree/master#process-collector) exported by the Prometheus Python client, the following CTFd-specific metrics are exported..
