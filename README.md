@@ -43,12 +43,12 @@ ctfd_teams_total{type="banned"} 0.0
 ctfd_teams_total{type="active"} 1.0
 # HELP ctfd_challenge_solves_total Solves per challenges
 # TYPE ctfd_challenge_solves_total gauge
-ctfd_challenge_solves_total{id="1",name="test"} 0.0
-ctfd_challenge_solves_total{id="2",name="test2"} 0.0
+ctfd_challenge_solves_total{category="Category 1",id="1",name="test"} 0.0
+ctfd_challenge_solves_total{category="Category 2",id="2",name="test2"} 0.0
 # HELP ctfd_challenge_value Value per challenges
 # TYPE ctfd_challenge_value gauge
-ctfd_challenge_value{id="1",name="test"} 1000.0
-ctfd_challenge_value{id="2",name="test2"} 500.0
+ctfd_challenge_value{category="Category 1",id="1",name="test"} 1000.0
+ctfd_challenge_value{category="Category 2",id="2",name="test2"} 500.0
 # HELP ctfd_team_points_total Points per team
 # TYPE ctfd_team_points_total gauge
 ctfd_team_points_total{banned="False",hidden="True",id="1",name="Platypwnies"} 2000.0

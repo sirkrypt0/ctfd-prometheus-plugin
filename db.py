@@ -36,6 +36,7 @@ def get_challenge_solves():
         db.session.query(
             solves_sub.columns.challenge_id,
             Challenges.name,
+            Challenges.category,
             solves_sub.columns.solves,
         )
         .join(Challenges, solves_sub.columns.challenge_id == Challenges.id)
@@ -45,13 +46,13 @@ def get_challenge_solves():
     has_solves = [c[0] for c in solves]
     for c in get_chals():
         if c.id not in has_solves:
-            solves.append([c.id, c.name, 0])
+            solves.append([c.id, c.name, c.category, 0])
 
     return solves
 
 
 def get_challenge_values():
-    return [(c.id, c.name, c.value) for c in get_chals()]
+    return [(c.id, c.name, c.category, c.value) for c in get_chals()]
 
 
 def get_team_count():

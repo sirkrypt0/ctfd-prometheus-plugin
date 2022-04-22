@@ -33,19 +33,19 @@ class MetricsCollector(object):
             c = GaugeMetricFamily(
                 "ctfd_challenge_solves_total",
                 "Solves per challenges",
-                labels=["id", "name"],
+                labels=["id", "name", "category"],
             )
-            for challenge_id, name, solves in get_challenge_solves():
-                c.add_metric([str(challenge_id), name], solves)
+            for challenge_id, name, category, solves in get_challenge_solves():
+                c.add_metric([str(challenge_id), name, category], solves)
             yield c
 
             c = GaugeMetricFamily(
                 "ctfd_challenge_value",
                 "Value per challenges",
-                labels=["id", "name"],
+                labels=["id", "name", "category"],
             )
-            for challenge_id, name, value in get_challenge_values():
-                c.add_metric([str(challenge_id), name], value)
+            for challenge_id, name, category, value in get_challenge_values():
+                c.add_metric([str(challenge_id), name, category], value)
             yield c
 
             c = GaugeMetricFamily(
