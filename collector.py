@@ -1,4 +1,4 @@
-from prometheus_client.core import CounterMetricFamily, GaugeMetricFamily
+from prometheus_client.core import GaugeMetricFamily
 
 from .db import (
     get_team_count,
@@ -18,7 +18,7 @@ class MetricsCollector(object):
     def collect(self):
         self.logger.debug("Collecting metrics")
         with self.app.app_context():
-            c = CounterMetricFamily(
+            c = GaugeMetricFamily(
                 "ctfd_teams_total", "Total number of teams", labels=["type"]
             )
             hidden_team_count = get_hidden_team_count()
@@ -29,7 +29,7 @@ class MetricsCollector(object):
             c.add_metric(["active"], active_team_count)
             yield c
 
-            c = CounterMetricFamily(
+            c = GaugeMetricFamily(
                 "ctfd_challenge_solves_total",
                 "Solves per challenges",
                 labels=["id", "name"],
@@ -38,7 +38,7 @@ class MetricsCollector(object):
                 c.add_metric([str(challenge_id), name], solves)
             yield c
 
-            c = CounterMetricFamily(
+            c = GaugeMetricFamily(
                 "ctfd_team_points_total",
                 "Points per team",
                 labels=["id", "name", "hidden", "banned"],
@@ -47,7 +47,7 @@ class MetricsCollector(object):
                 c.add_metric([str(account_id), name, str(hidden), str(banned)], score)
             yield c
 
-            c = CounterMetricFamily(
+            c = GaugeMetricFamily(
                 "ctfd_team_solves_total",
                 "Solves per team",
                 labels=["id", "name", "hidden", "banned"],

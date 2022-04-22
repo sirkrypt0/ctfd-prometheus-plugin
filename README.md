@@ -37,20 +37,20 @@ In addition to the [default metrics](https://github.com/prometheus/client_python
 
 ```prometheus
 # HELP ctfd_teams_total Total number of teams
-# TYPE ctfd_teams_total counter
+# TYPE ctfd_teams_total gauge
 ctfd_teams_total{type="hidden"} 1.0
 ctfd_teams_total{type="banned"} 0.0
 ctfd_teams_total{type="active"} 1.0
 # HELP ctfd_challenge_solves_total Solves per challenges
-# TYPE ctfd_challenge_solves_total counter
+# TYPE ctfd_challenge_solves_total gauge
 ctfd_challenge_solves_total{id="1",name="test"} 0.0
 ctfd_challenge_solves_total{id="2",name="test2"} 0.0
 # HELP ctfd_team_points_total Points per team
-# TYPE ctfd_team_points_total counter
+# TYPE ctfd_team_points_total gauge
 ctfd_team_points_total{banned="False",hidden="True",id="1",name="Platypwnies"} 2000.0
 ctfd_team_points_total{banned="False",hidden="False",id="2",name="Some Team"} 0.0
 # HELP ctfd_team_solves_total Solves per team
-# TYPE ctfd_team_solves_total counter
+# TYPE ctfd_team_solves_total gauge
 ctfd_team_solves_total{banned="False",hidden="True",id="1",name="Platypwnies"} 2.0
 ctfd_team_solves_total{banned="False",hidden="False",id="2",name="Some Team"} 0.0
 ```
