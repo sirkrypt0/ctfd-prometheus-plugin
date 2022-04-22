@@ -50,6 +50,10 @@ def get_challenge_solves():
     return solves
 
 
+def get_challenge_values():
+    return [(c.id, c.name, c.value) for c in get_chals()]
+
+
 def get_team_count():
     Model = get_model()
     if Model is None:

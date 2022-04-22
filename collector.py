@@ -5,6 +5,7 @@ from .db import (
     get_hidden_team_count,
     get_banned_team_count,
     get_challenge_solves,
+    get_challenge_values,
     get_team_scores,
     get_team_solves,
 )
@@ -36,6 +37,15 @@ class MetricsCollector(object):
             )
             for challenge_id, name, solves in get_challenge_solves():
                 c.add_metric([str(challenge_id), name], solves)
+            yield c
+
+            c = GaugeMetricFamily(
+                "ctfd_challenge_value",
+                "Value per challenges",
+                labels=["id", "name"],
+            )
+            for challenge_id, name, value in get_challenge_values():
+                c.add_metric([str(challenge_id), name], value)
             yield c
 
             c = GaugeMetricFamily(
