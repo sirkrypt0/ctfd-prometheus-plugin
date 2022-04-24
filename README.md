@@ -31,6 +31,14 @@ scrape_configs:
       - targets: ['<https://ctfd.example.com>']
 ```
 
+### Grafana
+
+Once you connected your Prometheus and your Grafana, the `ctfd` metrics should appear in Grafana.
+To get started, we prepared the following dashboards that you can import:
+
+- [`detailed-dashboard.json`](detailed-dashboard.json): A rather detailed dashboard evluating lots of different metrics over time.
+- [`minimal-dashboard.json`](minimal-dashboard.json): A minimal dashboard that can be displayed to participants on site for example.
+
 ## Metrics
 
 In addition to the [default metrics](https://github.com/prometheus/client_python/tree/master#process-collector) exported by the Prometheus Python client, the following CTFd-specific metrics are exported..
